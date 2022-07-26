@@ -119,7 +119,10 @@ fi
 
 echo "Calculating optimal AUC threshold: $(date)"
 
-path=`dirname $0`
+#path=`dirname $0`
+#path="$(cd "$(dirname "$0")" && pwd)"
+path=$(cd "$(dirname "$(readlink "$0" || echo "$0")")" && pwd)
+
 if [[ -f $2 ]] && [[ $norm == "norm" ]]
 then
 	echo "Calculating threshold using normalized control: $(date)"
